@@ -74,16 +74,6 @@ export default function RecoveryPopup() {
 
   return (
     <>
-      {/* Floating Preview Trigger Button in the bottom-left corner */}
-      <div className="fixed bottom-4 left-4 z-[100] pointer-events-auto">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="bg-[#3d2b29] text-white text-[11px] sm:text-xs font-black px-3.5 py-2.5 rounded-full shadow-[0_4px_15px_rgba(61,43,41,0.25)] border border-white/10 hover:bg-[#5d4642] transition-all flex items-center gap-1.5 cursor-pointer opacity-75 hover:opacity-100 uppercase tracking-widest font-sans"
-        >
-          <span>🧪 Testar Popup</span>
-        </button>
-      </div>
-
       <AnimatePresence>
         {isOpen && (
           <div 
