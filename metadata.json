@@ -1,0 +1,6 @@
+{
+  "name": "+120 Dinâmicas de Sofá",
+  "description": "Página de vendas de alta conversão para o guia digital de dinâmicas de conexão rápida e descanso físico para mães cansadas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
