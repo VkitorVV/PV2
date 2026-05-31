@@ -1,21 +1,14 @@
-export default async function handler(request) {
+export function GET(request) {
+  return Response.json({
+    ok: true,
+    message: "Webhook Vega -> GA4 online",
+  });
+}
+
+export async function POST(request) {
   try {
     const url = new URL(request.url);
     const token = url.searchParams.get("token");
-
-    if (request.method === "GET") {
-      return Response.json({
-        ok: true,
-        message: "Webhook Vega -> GA4 online",
-      });
-    }
-
-    if (request.method !== "POST") {
-      return Response.json(
-        { ok: false, error: "Método não permitido" },
-        { status: 405 }
-      );
-    }
 
     if (!token || token !== process.env.VEGA_WEBHOOK_TOKEN) {
       return Response.json(
@@ -49,7 +42,7 @@ export default async function handler(request) {
           params: {
             transaction_id: String(transactionId),
             currency: "BRL",
-            value: value,
+            value,
             source_platform: "vegacheckout",
             webhook_origin: "vega",
             engagement_time_msec: 100,
@@ -77,7 +70,7 @@ export default async function handler(request) {
       ga_status: gaResponse.status,
       event_name: eventName,
       transaction_id: transactionId,
-      value: value,
+      value,
     });
   } catch (error) {
     return Response.json(
