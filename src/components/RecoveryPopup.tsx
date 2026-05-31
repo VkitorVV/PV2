@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Check } from 'lucide-react';
+import {
+  trackRecoveryPopupShow,
+  trackRecoveryAccept,
+  trackRecoveryRefuse,
+} from '../analytics';
 
 export default function RecoveryPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +36,7 @@ export default function RecoveryPopup() {
       // Delay of 1.5 seconds (1500ms)
       const timer = setTimeout(() => {
         setIsOpen(true);
+        trackRecoveryPopupShow();
         localStorage.setItem('dinamicas_popup_1790_visto', Date.now().toString());
       }, 1500);
 
@@ -64,10 +70,12 @@ export default function RecoveryPopup() {
   }, [isOpen]);
 
   const handleClose = () => {
+    trackRecoveryRefuse();
     setIsOpen(false);
   };
 
   const handleCTA = () => {
+    trackRecoveryAccept();
     localStorage.setItem('comprou_1790', 'true');
     window.location.href = 'https://checkout.compraseguracheckout.shop/VCCL1O8SD34O';
   };

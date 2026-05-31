@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Clock, Sparkles } from 'lucide-react';
+import {
+  trackInterceptAccept,
+  trackInterceptCloseX,
+  trackInterceptRefuseText,
+} from '../analytics';
 
 interface OfferInterceptionModalProps {
   isOpen: boolean;
@@ -80,7 +85,7 @@ export default function OfferInterceptionModal({
           {/* Close button */}
           <button
             id="offer-intercept-close-btn"
-            onClick={onClose}
+            onClick={() => { trackInterceptCloseX(); onClose(); }}
             className="absolute top-4 right-4 text-petroleo/40 hover:text-petroleo/80 transition-colors p-2 rounded-full hover:bg-stone-200/50 z-20"
             aria-label="Voltar"
           >
@@ -155,7 +160,7 @@ export default function OfferInterceptionModal({
             <div className="pt-4 space-y-4 max-w-lg mx-auto w-full">
               <motion.button
                 id="offer-intercept-cta-upgrade"
-                onClick={onAccept}
+                onClick={() => { trackInterceptAccept(); onAccept(); }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 animate={{ 
@@ -175,7 +180,7 @@ export default function OfferInterceptionModal({
               <div className="text-center pt-2">
                 <button
                   id="offer-intercept-refuse-btn"
-                  onClick={onRefuseBasic}
+                  onClick={() => { trackInterceptRefuseText(); onRefuseBasic(); }}
                   className="font-sans text-[10.5px] sm:text-xs text-stone-400 hover:text-stone-600 underline font-medium transition-colors max-w-md mx-auto leading-relaxed cursor-pointer block bg-transparent border-0 w-full"
                 >
                   Não, obrigado. Eu prefiro pagar mais caro depois e quero seguir apenas com o básico por R$ 14,90.

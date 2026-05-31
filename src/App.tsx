@@ -16,12 +16,24 @@ import HeroBundleMockup from './components/HeroBundleMockup';
 import OfferInterceptionModal from './components/OfferInterceptionModal';
 import { PurchaseNotification } from './components/PurchaseNotification';
 import RecoveryPopup from './components/RecoveryPopup';
+import { useFunnelTracking } from './hooks/useFunnelTracking';
+import {
+  trackCTA1,
+  trackCTA2,
+  trackCTA3,
+  trackSelectBasic,
+  trackSelectComplete,
+  trackInterceptPopupShow,
+} from './analytics';
 
 export default function App() {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [interceptModalOpen, setInterceptModalOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<'basic' | 'complete'>('complete');
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
+
+  // Rastreamento automático das seções do funil via IntersectionObserver
+  useFunnelTracking();
 
   // Smooth scroll handler
   const scrollWithId = (selectorId: string) => {
@@ -31,11 +43,14 @@ export default function App() {
     }
   };
 
-  // Open Checkout
+  // Open Checkout — com rastreamento de plano selecionado
   const handleCheckoutOpen = (plan: 'basic' | 'complete') => {
     if (plan === 'basic') {
+      trackSelectBasic();
+      trackInterceptPopupShow();
       setInterceptModalOpen(true);
     } else {
+      trackSelectComplete();
       window.location.href = 'https://checkout.compraseguracheckout.shop/VCCL1O8SD26X';
     }
   };
@@ -96,7 +111,7 @@ export default function App() {
             <div className="space-y-3 pt-2">
               <button
                 id="main-cta-hero"
-                onClick={() => scrollWithId('oferta-valores')}
+                onClick={() => { trackCTA1(); scrollWithId('oferta-valores'); }}
                 className="w-full py-4 px-6 bg-gradient-to-r from-coral to-coral-dark hover:from-coral-dark hover:to-coral-dark text-white font-sans font-bold text-base rounded-2xl shadow-lg hover:shadow-xl hover:shadow-coral/20 transition-all cursor-pointer transform active:scale-[0.99] text-center"
               >
                 QUERO BRINCAR SEM ME ESGOTAR
@@ -218,7 +233,7 @@ export default function App() {
 
           <div className="pt-2 max-w-sm mx-auto space-y-3">
             <button
-              onClick={() => scrollWithId('oferta-valores')}
+              onClick={() => { trackCTA2(); scrollWithId('oferta-valores'); }}
               className="w-full py-4 px-6 bg-coral hover:bg-coral-dark text-white font-sans font-bold text-sm rounded-xl transition-all cursor-pointer shadow-lg shadow-coral/10 hover:shadow-coral/20 transform active:scale-[0.99] text-center uppercase tracking-wider"
             >
               QUERO ACESSO IMEDIATO
@@ -926,7 +941,7 @@ export default function App() {
           {/* Final Call to Action 3 */}
           <div className="text-center space-y-3 max-w-sm mx-auto">
             <button
-              onClick={() => handleCheckoutOpen('complete')}
+              onClick={() => { trackCTA3(); handleCheckoutOpen('complete'); }}
               className="w-full py-4 px-6 bg-coral hover:bg-coral-dark text-white font-sans font-bold text-sm rounded-xl transition-all cursor-pointer shadow-md shadow-coral/10 text-center uppercase tracking-wide"
             >
               QUERO COMEÇAR AGORA POR R$ 24,90
