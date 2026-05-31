@@ -19,6 +19,9 @@ export async function POST(request) {
 
     const body = await request.json().catch(() => ({}));
 
+    const safeBody = maskSensitiveData(body);
+    console.log("Webhook recebido da Vega:", JSON.stringify(safeBody, null, 2));
+
     const eventName = mapVegaEventToGA4(body);
 
     const transactionId =
@@ -33,6 +36,10 @@ export async function POST(request) {
       `vega_${Date.now()}`;
 
     const value = extractValue(body);
+
+    console.log("Evento enviado ao GA4:", eventName);
+    console.log("Transaction ID:", transactionId);
+    console.log("Valor:", value);
 
     const gaPayload = {
       client_id: `vega_${transactionId}`,
@@ -63,6 +70,8 @@ export async function POST(request) {
       },
       body: JSON.stringify(gaPayload),
     });
+
+    console.log("GA4 status:", gaResponse.status);
 
     return Response.json({
       ok: true,
@@ -181,4 +190,54 @@ function extractValue(body) {
   }
 
   return number > 1000 ? number / 100 : number;
+}
+
+function maskSensitiveData(data) {
+  try {
+    const cloned = JSON.parse(JSON.stringify(data));
+
+    const sensitiveKeys = [
+      "email",
+      "phone",
+      "telefone",
+      "document",
+      "documento",
+      "cpf",
+      "cnpj",
+      "name",
+      "nome",
+      "full_name",
+      "fullname",
+      "customer_name",
+      "buyer_name",
+      "address",
+      "endereco",
+      "street",
+      "rua",
+      "number",
+      "numero",
+      "zip",
+      "zipcode",
+      "cep",
+    ];
+
+    function walk(obj) {
+      if (!obj || typeof obj !== "object") return;
+
+      for (const key of Object.keys(obj)) {
+        const lowerKey = key.toLowerCase();
+
+        if (sensitiveKeys.includes(lowerKey)) {
+          obj[key] = "[MASKED]";
+        } else if (typeof obj[key] === "object") {
+          walk(obj[key]);
+        }
+      }
+    }
+
+    walk(cloned);
+    return cloned;
+  } catch (error) {
+    return { error: "Não foi possível mascarar o body", raw_type: typeof data };
+  }
 }
