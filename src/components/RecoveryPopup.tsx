@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { X, Check } from 'lucide-react';
 import {
   trackRecoveryPopupShow,
-  trackRecoveryAccept,
+  trackRecoveryAcceptAndRedirect,
   trackRecoveryRefuse,
 } from '../analytics';
 
@@ -75,9 +75,8 @@ export default function RecoveryPopup() {
   };
 
   const handleCTA = () => {
-    trackRecoveryAccept();
     localStorage.setItem('comprou_1790', 'true');
-    window.location.href = 'https://checkout.compraseguracheckout.shop/VCCL1O8SD34O';
+    trackRecoveryAcceptAndRedirect('https://checkout.compraseguracheckout.shop/VCCL1O8SD34O');
   };
 
   return (

@@ -2,23 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Clock, Sparkles } from 'lucide-react';
 import {
-  trackInterceptAccept,
+  trackInterceptAcceptAndRedirect,
   trackInterceptCloseX,
-  trackInterceptRefuseText,
+  trackInterceptRefuseAndRedirect,
 } from '../analytics';
 
 interface OfferInterceptionModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onAccept: () => void;
-  onRefuseBasic: () => void;
+  onAcceptUrl: string;
+  onRefuseBasicUrl: string;
 }
 
 export default function OfferInterceptionModal({
   isOpen,
   onClose,
-  onAccept,
-  onRefuseBasic,
+  onAcceptUrl,
+  onRefuseBasicUrl,
 }: OfferInterceptionModalProps) {
   const [secondsLeft, setSecondsLeft] = useState(300); // 5 minutes
 
@@ -160,17 +160,9 @@ export default function OfferInterceptionModal({
             <div className="pt-4 space-y-4 max-w-lg mx-auto w-full">
               <motion.button
                 id="offer-intercept-cta-upgrade"
-                onClick={() => { trackInterceptAccept(); onAccept(); }}
+                onClick={() => trackInterceptAcceptAndRedirect(onAcceptUrl)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                animate={{ 
-                  boxShadow: ["0 0 0 0 rgba(16, 185, 129, 0.4)", "0 0 0 15px rgba(16, 185, 129, 0)", "0 0 0 0 rgba(16, 185, 129, 0)"]
-                }}
-                transition={{ 
-                  duration: 2, 
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
                 className="w-full py-4.5 px-6 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-sans font-black text-xs sm:text-sm md:text-base rounded-2xl shadow-xl border-b-4 border-emerald-700 cursor-pointer text-center flex items-center justify-center gap-2 transition-all outline-none"
               >
                 <span>👉</span> SIM! QUERO ADICIONAR TUDO POR APENAS R$ 19,90
@@ -180,7 +172,7 @@ export default function OfferInterceptionModal({
               <div className="text-center pt-2">
                 <button
                   id="offer-intercept-refuse-btn"
-                  onClick={() => { trackInterceptRefuseText(); onRefuseBasic(); }}
+                  onClick={() => trackInterceptRefuseAndRedirect(onRefuseBasicUrl)}
                   className="font-sans text-[10.5px] sm:text-xs text-stone-400 hover:text-stone-600 underline font-medium transition-colors max-w-md mx-auto leading-relaxed cursor-pointer block bg-transparent border-0 w-full"
                 >
                   Não, obrigado. Eu prefiro pagar mais caro depois e quero seguir apenas com o básico por R$ 14,90.

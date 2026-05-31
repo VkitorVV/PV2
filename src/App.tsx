@@ -22,7 +22,7 @@ import {
   trackCTA2,
   trackCTA3,
   trackSelectBasic,
-  trackSelectComplete,
+  trackSelectCompleteAndRedirect,
   trackInterceptPopupShow,
 } from './analytics';
 
@@ -50,8 +50,7 @@ export default function App() {
       trackInterceptPopupShow();
       setInterceptModalOpen(true);
     } else {
-      trackSelectComplete();
-      window.location.href = 'https://checkout.compraseguracheckout.shop/VCCL1O8SD26X';
+      trackSelectCompleteAndRedirect('https://checkout.compraseguracheckout.shop/VCCL1O8SD26X');
     }
   };
 
@@ -987,12 +986,8 @@ export default function App() {
       <OfferInterceptionModal
         isOpen={interceptModalOpen}
         onClose={() => setInterceptModalOpen(false)}
-        onAccept={() => {
-          window.location.href = 'https://checkout.compraseguracheckout.shop/VCCL1O8SD2HL';
-        }}
-        onRefuseBasic={() => {
-          window.location.href = 'https://checkout.compraseguracheckout.shop/VCCL1O8SD2HJ';
-        }}
+        onAcceptUrl="https://checkout.compraseguracheckout.shop/VCCL1O8SD2HL"
+        onRefuseBasicUrl="https://checkout.compraseguracheckout.shop/VCCL1O8SD2HJ"
       />
 
       {/* SALES PROOF NOTIFICATION POPUP */}
