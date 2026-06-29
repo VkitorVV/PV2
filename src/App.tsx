@@ -16,6 +16,7 @@ import HeroBundleMockup from './components/HeroBundleMockup';
 import OfferInterceptionModal from './components/OfferInterceptionModal';
 import { PurchaseNotification } from './components/PurchaseNotification';
 import RecoveryPopup from './components/RecoveryPopup';
+import TestimonialsCarousel from './components/TestimonialsCarousel';
 import { useFunnelTracking } from './hooks/useFunnelTracking';
 import {
   trackCTA1,
@@ -62,64 +63,75 @@ export default function App() {
       <div className="absolute top-1/4 left-0 w-[35vw] h-[35vw] watercolor-wash-sage rounded-full -z-10 pointer-events-none opacity-30"></div>
 
       {/* BLOCK 01 — VENDA IMEDIATA (Hero section/first fold) */}
-      <section id="venda-imediata" className="pt-8 pb-16 md:pt-12 md:pb-24 px-4 max-w-7xl mx-auto w-full">
-        {/* Top bar with micro branding (Anti-AI-slop: clean, zero fake ports or logs) */}
-        <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2 bg-coral/10 hover:bg-coral/15 transition-all text-coral-dark text-xs sm:text-xs font-bold leading-none px-4 py-2 rounded-full uppercase tracking-widest border border-coral/15 shadow-sm">
-            <Heart size={12} className="shrink-0" /> PARA MÃES CANSADAS DE VERDADE
+      <section id="venda-imediata" className="pt-10 pb-16 md:pt-16 md:pb-24 px-4 max-w-7xl mx-auto w-full">
+
+        {/* Selo — texto curto, não quebra */}
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex items-center gap-2 bg-coral/10 text-coral-dark text-[11px] font-bold px-4 py-2 rounded-full uppercase tracking-wider border border-coral/15 shadow-sm whitespace-nowrap">
+            <Heart size={11} className="shrink-0" /> Para mães que amam, mas chegam exaustas
           </div>
         </div>
 
-        {/* Headline */}
-        <div className="text-center max-w-4xl mx-auto space-y-4 mb-10">
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-petroleo leading-tight tracking-tight font-bold">
-            Brinque <span className="relative inline-block text-coral-dark font-extrabold px-1">DEITADA<span className="absolute bottom-1.5 left-0 w-full h-1 sm:h-2 bg-coral/15 -z-10 rounded"></span></span> no sofá — e ainda assim seja a mãe que ele vai lembrar pra sempre
+        {/* Headline — 2 linhas */}
+        <div className="text-center max-w-2xl mx-auto mb-5">
+          <h1 className="font-serif leading-tight tracking-tight">
+            <span className="block text-xl sm:text-2xl md:text-4xl font-normal text-petroleo/70 mb-3">
+              Seu filho não precisa de uma mãe com mais energia.
+            </span>
+            <span className="block text-xl sm:text-2xl md:text-4xl font-extrabold text-coral-dark mb-3">
+              Ele só precisa de alguns minutos em que sinta que você esteve realmente com ele.
+            </span>
           </h1>
-          
-          <p className="font-sans text-base sm:text-lg md:text-xl text-terracotta/90 leading-relaxed max-w-3xl mx-auto font-light">
-            <strong className="font-semibold text-petroleo font-sans">+120 dinâmicas leves, acolhedoras e simples</strong> para criar conexão real com seu filho <span className="font-medium text-coral-dark-accent bg-coral/10 px-1 py-0.5 rounded">mesmo nos dias em que sua bateria está no 1%</span> — sem precisar pular, suar ou fingir que tem energia que você não tem.
-          </p>
         </div>
 
-        {/* Content Layout: Mockup + Core Features */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center mb-10 max-w-5xl mx-auto">
-          {/* Mockup visualization (Visual tangibility) - High-end Bespoke Interactive Bundle Canvas */}
+        {/* Divider sutil */}
+        <div className="flex justify-center mb-6">
+          <div className="w-12 h-px bg-coral/30 rounded-full"></div>
+        </div>
+
+        {/* Subheadline */}
+        <div className="text-center max-w-xl mx-auto mb-10">
+          <p className="font-sans text-sm sm:text-base text-terracotta/80 leading-relaxed">
+            Você não precisa correr pela casa, inventar brincadeiras ou fingir disposição depois de um dia exaustivo.
+          </p>
+
+        </div>
+
+        {/* Mockup + bullets + CTA */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center max-w-5xl mx-auto">
           <div className="lg:col-span-6 flex justify-center relative py-4 px-1">
             <HeroBundleMockup />
           </div>
 
-          {/* Copy description and immediate Action */}
           <div className="lg:col-span-6 space-y-6">
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <div className="w-5 h-5 rounded-full bg-sage/20 text-emerald-800 flex items-center justify-center font-bold text-xs shrink-0 mt-1">✓</div>
                 <p className="text-sm text-terracotta leading-relaxed">
-                  O guia digital para mães que chegam em casa às 19h em colapso, e ainda assim querem <strong className="font-bold text-petroleo">tirar o filho da tela sem precisar virar a versão "mais animada" delas mesmas.</strong>
+                  O guia foi criado para mães que chegam no fim do dia sem forças, mas ainda querem dar ao filho algo que ele vai levar pra vida: <strong className="font-bold text-petroleo">atenção, presença e memória afetiva de verdade.</strong>
                 </p>
               </div>
-
               <div className="flex items-start gap-3">
                 <div className="w-5 h-5 rounded-full bg-sage/20 text-emerald-800 flex items-center justify-center font-bold text-xs shrink-0 mt-1">✓</div>
                 <p className="text-sm text-terracotta leading-relaxed">
-                  Acesso imediato enviado para o seu e-mail ou WhatsApp. Rápido, fácil e vitalício. <strong className="font-bold text-petroleo">Use ainda hoje à noite.</strong>
+                  Acesso imediato — use hoje mesmo, no celular, no sofá ou na cama. Porque às vezes é justamente nos dias mais cansados que <strong className="font-bold text-petroleo">um momento simples vira a lembrança mais bonita.</strong>
                 </p>
               </div>
             </div>
 
-            {/* Main Call to Action 1 */}
+            {/* CTA */}
             <div className="space-y-3 pt-2">
               <button
                 id="main-cta-hero"
                 onClick={() => { trackCTA1(); scrollWithId('oferta-valores'); }}
                 className="w-full py-4 px-6 bg-gradient-to-r from-coral to-coral-dark hover:from-coral-dark hover:to-coral-dark text-white font-sans font-bold text-base rounded-2xl shadow-lg hover:shadow-xl hover:shadow-coral/20 transition-all cursor-pointer transform active:scale-[0.99] text-center"
               >
-                QUERO BRINCAR SEM ME ESGOTAR
+                QUERO VIVER ESSE MOMENTO HOJE
               </button>
-              
               <div className="flex flex-col sm:flex-row justify-center items-center gap-2 text-xs text-terracotta/60 font-medium">
                 <span className="flex items-center gap-1.5"><ArrowRight size={14} className="text-coral-dark" /> Acesso imediato</span>
                 <span className="hidden sm:inline">•</span>
-                <span className="flex items-center gap-1.5"><ShieldCheck size={14} className="text-coral-dark" /> Garantia incondicional de 7 dias</span>
+                <span className="flex items-center gap-1.5"><ShieldCheck size={14} className="text-coral-dark" /> Garantia de 7 dias</span>
                 <span className="hidden sm:inline">•</span>
                 <span className="flex items-center gap-1.5"><Check size={14} className="text-coral-dark" /> Pix ou Cartão</span>
               </div>
@@ -135,11 +147,11 @@ export default function App() {
             <span className="text-xs bg-coral/10 text-coral-dark font-bold font-sans uppercase px-3 py-1 rounded-full">
               VEJA POR DENTRO
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-petroleo font-bold">
-              Veja um pedacinho do material que você vai receber na prática
+            <h2 className="font-serif text-xl sm:text-3xl md:text-4xl text-petroleo font-bold">
+              Veja como o guia transforma minutos cansados em momentos que aproximam vocês
             </h2>
-            <p className="font-sans text-sm md:text-base text-terracotta/90 leading-relaxed max-w-lg mx-auto">
-              Cada dinâmica é apresentada em 1 página visual, com: passo a passo, exemplo pronto, perguntas para estimular, variações rápidas e duração média. Sem teoria pesada. Sem enrolação.
+            <p className="font-sans text-xs sm:text-sm md:text-base text-terracotta/90 leading-relaxed max-w-lg mx-auto">
+              Cada dinâmica vem pronta para usar, com explicação simples, exemplo, perguntas para estimular conversa e variações rápidas. Tudo pensado para que você não precise inventar nada — só abrir e viver um momento gostoso com seu filho.
             </p>
           </div>
 
@@ -154,60 +166,86 @@ export default function App() {
 
       {/* BLOCK 03 — BENEFÍCIOS DO PRODUTO */}
       <section id="beneficios" className="py-20 px-4 max-w-5xl mx-auto w-full">
-        <div className="text-center space-y-2 mb-12">
+        <div className="text-center space-y-2 mb-10">
           <span className="text-xs bg-sage/10 text-emerald-800 font-bold font-sans uppercase px-3 py-1 rounded-full">
             POR QUE FUNCIONA
           </span>
-          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-petroleo font-bold">
-            O que esse guia faz por você que outros guias de "atividades pra criança" não fazem
+          <h2 className="font-serif text-xl sm:text-3xl md:text-4xl text-petroleo font-bold">
+            A conexão que seu filho merece, sem esgotar você
           </h2>
+        </div>
+
+        {/* Bloco emocional otimizado */}
+        <div className="max-w-2xl mx-auto mb-14 text-center space-y-6">
+          <p className="font-serif text-lg sm:text-2xl text-petroleo leading-relaxed">
+            Mais do que brinquedos, seu filho lembrará dos momentos que vocês viveram juntos.{' '}
+            <span className="text-coral-dark font-semibold">Este guia torna isso possível, mesmo quando você está exausta.</span>
+          </p>
+
+          <div className="pt-5 pb-2 space-y-2 border-t border-petroleo/8">
+            <p className="font-sans text-sm sm:text-base text-petroleo font-semibold">
+              Nenhuma dessas lembranças exige uma mãe perfeita.
+            </p>
+            <p className="font-sans text-sm sm:text-base text-terracotta/90">
+              Só exige que ela esteja ali.{' '}
+              <span className="font-semibold text-coral-dark">Mesmo cansada.</span>
+            </p>
+          </div>
         </div>
 
         {/* Graded Benefits Grid (No long paragraphs) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
             {
-              title: "Você fica parada totalmente.",
-              text: "Todas as dinâmicas foram pensadas para você gastar de 0 a 5% de sua energia física — enquanto seu filho gasta 100% da dele."
+              icon: <BatteryWarning size={15} className="stroke-[2.5]" />,
+              title: "Você preserva sua energia sem abrir mão da presença",
+              text: "Mesmo descansando, seu filho sente que vocês estão juntos de verdade."
             },
             {
-              title: "Tira o filho da tela em segundos.",
-              text: "Você não precisa implorar ou gritar. É só puxar uma dinâmica rápida e ele larga o tablet ou celular sozinho voluntariamente."
+              icon: <MonitorOff size={15} className="stroke-[2.5]" />,
+              title: "A tela deixa de ser a única saída",
+              text: "Em vez de proibir, você oferece algo mais forte: atenção com vínculo."
             },
             {
-              title: "Organizadas em 6 módulos prontos.",
-              text: "Conexão Rápida, Crianças Agitadas, Educativas e Criativas, Afeto e Desenvolvimento Emocional, e um módulo só para crianças de 3 a 5 anos."
+              icon: <Search size={15} className="stroke-[2.5]" />,
+              title: "Você encontra o tipo certo de conexão para cada noite",
+              text: "Seja para rir, acalmar, conversar ou gastar energia — tem dinâmica pronta para cada momento."
             },
             {
-              title: "Funciona para crianças de 3 a 10 anos.",
-              text: "Qualquer dinâmica vem com recomendações de adaptação por idade para que o jogo não fique bobo para o mais velho, nem difícil para o menor."
+              icon: <Activity size={15} className="stroke-[2.5]" />,
+              title: "As dinâmicas acompanham a fase do seu filho",
+              text: "Sem ficar infantil demais para um, nem difícil demais para outro."
             },
             {
-              title: "Zero material complicado ou caro.",
-              text: "Usa o que você já tem espalhado em casa: almofadas, lençol mole, papel simples, lápis de cor ou pequenos objetos do dia a dia."
+              icon: <Heart size={15} className="stroke-[2.5]" />,
+              title: "Você cria memória com o que já existe na sua casa",
+              text: "Porque o que marca a infância não é produção; é presença."
             },
             {
-              title: "Cada dinâmica em 5 minutos ou menos.",
-              text: "Você não precisa de horas extras de planejamento — basta abrir o PDF no celular e começar enquanto descansa o pescoço."
+              icon: <Clock size={15} className="stroke-[2.5]" />,
+              title: "Até poucos minutos já mudam o clima da noite",
+              text: "Às vezes, o que faltava não era mais tempo — era a ideia certa."
             },
             {
-              title: "Sem bagunça absurda para arrumar.",
-              text: "Nada de massinha grudada na mesa inteira ou tinta esparramada nas roupas. Você não vai dormir mais estressada do que começou."
+              icon: <SmilePlus size={15} className="stroke-[2.5]" />,
+              title: "Você termina a noite mais leve, não mais sobrecarregada",
+              text: "A conexão acontece sem virar mais uma fonte de estresse."
             },
             {
-              title: "No celular, na cama ou no banheiro.",
-              text: "Formato digital em PDF responsivo acessível em qualquer dispositivo onde e quando você mais precisar."
+              icon: <CheckCircle2 size={15} className="stroke-[2.5]" />,
+              title: "O guia cabe na vida real",
+              text: "Ele funciona no lugar e no horário em que a maternidade acontece de verdade."
             }
           ].map((bene, idx) => (
-            <div key={idx} className="bg-white border border-petroleo/10 rounded-2xl p-5 shadow-sm flex gap-4 transition-all hover:border-coral/20">
-              <span className="w-6 h-6 rounded-full bg-sage/20 text-emerald-800 flex items-center justify-center shrink-0 mt-1">
-                <Check size={14} className="stroke-[3]" />
+            <div key={idx} className="bg-white border border-petroleo/10 rounded-2xl p-5 shadow-sm flex gap-4 transition-all hover:border-coral/20 hover:shadow-md">
+              <span className="w-9 h-9 rounded-xl bg-sage/15 text-emerald-700 flex items-center justify-center shrink-0">
+                {bene.icon}
               </span>
               <div>
-                <h4 className="font-sans font-bold text-petroleo text-sm mb-1">
+                <h4 className="font-sans font-bold text-petroleo text-sm mb-1.5 leading-snug">
                   {bene.title}
                 </h4>
-                <p className="text-xs text-terracotta leading-relaxed">
+                <p className="text-xs text-terracotta/80 leading-relaxed">
                   {bene.text}
                 </p>
               </div>
@@ -216,33 +254,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* BLOCK 04 — HEADLINE DE URGÊNCIA + BOTÃO (CTA 2) */}
-      <section id="urgencia-cta" className="bg-petroleo text-creme py-16 px-4 relative overflow-hidden">
-        {/* Watercolor texture inside dark container */}
-        <div className="absolute inset-0 bg-coral/5 rounded-full blur-3xl -z-10"></div>
-        
-        <div className="max-w-4xl mx-auto w-full text-center space-y-6">
-          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-white font-bold max-w-2xl mx-auto leading-tight">
-            Ainda hoje à noite, você pode trocar a Netflix por 30 minutos de conexão real
-          </h2>
-          
-          <p className="font-sans text-xs sm:text-sm md:text-base text-creme/80 max-w-2xl mx-auto leading-relaxed font-light">
-            Acesso liberado imediatamente após o pagamento. Pague agora, baixe no celular em 1 minuto e use hoje mesmo, jogada no sofá ou na cama, logo antes de dormir. Sem espera. Sem complicação.
-          </p>
 
-          <div className="pt-2 max-w-sm mx-auto space-y-3">
-            <button
-              onClick={() => { trackCTA2(); scrollWithId('oferta-valores'); }}
-              className="w-full py-4 px-6 bg-coral hover:bg-coral-dark text-white font-sans font-bold text-sm rounded-xl transition-all cursor-pointer shadow-lg shadow-coral/10 hover:shadow-coral/20 transform active:scale-[0.99] text-center uppercase tracking-wider"
-            >
-              QUERO ACESSO IMEDIATO
-            </button>
-            <p className="text-[10px] text-creme/50">
-              Liberação na hora • Pix ou cartão
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* BLOCK 05 — IDEAL PARA VOCÊ QUE… */}
       <section id="ideal-para" className="py-20 px-4 max-w-5xl mx-auto w-full">
@@ -250,44 +262,40 @@ export default function App() {
           <span className="text-xs bg-coral/10 text-coral-dark font-sans font-bold uppercase px-3 py-1 rounded-full">
             IDEAL PARA VOCÊ QUE…
           </span>
-          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-petroleo font-bold">
-            Esse guia foi feito exatamente pra você se…
+          <h2 className="font-serif text-xl sm:text-3xl md:text-4xl text-petroleo font-bold">
+            Esse guia foi feito para você que ama profundamente, mas chega no fim do dia sem mais nada para entregar
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="max-w-2xl mx-auto space-y-8">
           {[
             {
-              icon: <BatteryWarning size={24} className="text-coral" />,
-              title: "Chega em casa às 19h em colapso",
-              desc: "Sua bateria corporal e mental encerrou por completo às 17h, mas a do seu filho pequeno só acaba às 22h. Você simplesmente não sabe de onde tirar força — e sente uma pesada culpa por isso."
+              linha1: "termina o dia completamente esgotada…",
+              linha2: "…mas ainda sente culpa por dizer \"agora não\".",
             },
             {
-              icon: <MonitorOff size={24} className="text-coral" />,
-              title: "Sente aperto no peito quando liga a TV",
-              desc: "Toda vez que vê a tela brilhando na sala com algum desenho bobo repetido, sente um nó no estômago. Você sabe que devia estar com ele, mas o corpo só pede para deitar longe dali."
+              linha1: "entrega o celular porque simplesmente não sobra energia…",
+              linha2: "…e depois vai dormir se perguntando se está fazendo o suficiente.",
             },
             {
-              icon: <SmilePlus size={24} className="text-coral" />,
-              title: "Não aguenta mais rolar no tapete da sala",
-              desc: "Suas costas, pescoço e joelhos doem só de imaginar. Você desejava amar brincar de blocos ajoelhada no chão, mas seu corpo adulto implora por uma desculpa para ficar de pé ou deitada e quieta."
+              linha1: "olha para o filho brincando sozinho…",
+              linha2: "…e sente que queria conseguir participar mais.",
             },
             {
-              icon: <Sparkles size={24} className="text-coral" />,
-              title: "Quer memórias limpas com seu filho na infância",
-              desc: "Você anseia lembrar do sorriso maroto dele e das conversas ingênuas, sem que haja uma luz fria de tela fria entre você e ele o tempo todo — mesmo nos piores dias de estresse de trabalho."
-            }
-          ].map((card, idx) => (
-            <div key={idx} className="bg-white border border-petroleo/10 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-              <div className="space-y-3">
-                <div className="w-10 h-10 rounded-xl bg-creme-warm/60 flex items-center justify-center shrink-0">
-                  {card.icon}
-                </div>
-                <h4 className="font-sans font-bold text-petroleo text-sm leading-tight">
-                  {card.title}
-                </h4>
-                <p className="text-xs text-terracotta leading-relaxed">
-                  {card.desc}
+              linha1: "ama ser mãe…",
+              linha2: "…mas às vezes sente que o cansaço está roubando momentos que nunca mais voltam.",
+            },
+          ].map((item, idx) => (
+            <div key={idx} className="flex items-start gap-4 bg-white border border-petroleo/8 rounded-2xl p-5 shadow-sm hover:border-coral/20 transition-all">
+              <div className="w-6 h-6 rounded-full bg-coral/10 flex items-center justify-center shrink-0 mt-0.5">
+                <Check size={13} className="text-coral stroke-[3]" />
+              </div>
+              <div className="space-y-1">
+                <p className="font-sans font-semibold text-petroleo text-xs sm:text-base leading-snug">
+                  {item.linha1}
+                </p>
+                <p className="font-sans text-terracotta/70 text-sm leading-relaxed">
+                  {item.linha2}
                 </p>
               </div>
             </div>
@@ -302,8 +310,8 @@ export default function App() {
             <span className="text-xs bg-sage/10 text-emerald-800 font-bold font-sans uppercase px-3 py-1 rounded-full">
               COMO SUA NOITE MUDA
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-petroleo font-bold">
-              A diferença entre uma noite "normal" e uma noite com o guia
+            <h2 className="font-serif text-xl sm:text-3xl md:text-4xl text-petroleo font-bold">
+              A diferença entre terminar a noite em culpa e terminar a noite sentindo que você esteve de verdade com ele
             </h2>
           </div>
 
@@ -318,23 +326,15 @@ export default function App() {
               <ul className="space-y-6 text-[13px] md:text-sm text-terracotta/80 list-none">
                 <li className="flex items-start gap-3">
                   <XCircle className="w-5 h-5 text-terracotta/40 shrink-0 mt-0.5" strokeWidth={2} />
-                  <span className="leading-relaxed">Chega em casa totalmente esgotada do serviço e o tablet da sala vira um <strong>"vilão necessário"</strong> para você respirar.</span>
+                  <span className="leading-relaxed">Você chega moída, entrega a tela para sobreviver e passa a noite com aquela <strong>sensação silenciosa de que a infância está escorrendo pelos dedos.</strong></span>
                 </li>
                 <li className="flex items-start gap-3">
                   <XCircle className="w-5 h-5 text-terracotta/40 shrink-0 mt-0.5" strokeWidth={2} />
-                  <span className="leading-relaxed">Tenta brincar de carrinho ajoelhada no chão áspero e o corpo grita logo com menos de 5 minutos: <strong>"chega"</strong>.</span>
+                  <span className="leading-relaxed">Tenta brincar do jeito tradicional, se irrita rápido porque o corpo não acompanha e vai dormir <strong>sentindo que falhou de novo.</strong></span>
                 </li>
                 <li className="flex items-start gap-3">
                   <XCircle className="w-5 h-5 text-terracotta/40 shrink-0 mt-0.5" strokeWidth={2} />
-                  <span className="leading-relaxed">Vai dormir com dor no peito e culpa, repetindo no escuro do quarto: <strong>"hoje a mamãe não brincou porque trabalhou demais"</strong>.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <XCircle className="w-5 h-5 text-terracotta/40 shrink-0 mt-0.5" strokeWidth={2} />
-                  <span className="leading-relaxed">Fica rolando o Instagram olhando fotos de mães modelo que brincam o dia todo e <strong>se sente uma farsa pior</strong>.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <XCircle className="w-5 h-5 text-terracotta/40 shrink-0 mt-0.5" strokeWidth={2} />
-                  <span className="leading-relaxed">Alimenta o medo de que ele lembre da primeira infância como <strong>"minha mãe estava sempre exausta ou doente"</strong>.</span>
+                  <span className="leading-relaxed">Repete para si mesma que é só uma fase, mas lá no fundo <strong>morre de medo de que seu filho se acostume a não esperar mais por você.</strong></span>
                 </li>
               </ul>
             </div>
@@ -348,23 +348,15 @@ export default function App() {
               <ul className="space-y-6 text-[13px] md:text-sm text-petroleo/90 list-none font-medium">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-sage shrink-0 mt-0.5" strokeWidth={2.5} />
-                  <span className="leading-relaxed">Abre o PDF no celular deitada de pijama, escolhe um jogo de 5 min e <strong>seu filho joga o celular ou tablet pra lá voluntariamente em 30 segundos</strong>.</span>
+                  <span className="leading-relaxed">Você abre o guia, escolhe uma dinâmica simples e em poucos minutos <strong>a tela perde espaço para um momento leve entre vocês.</strong></span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-sage shrink-0 mt-0.5" strokeWidth={2.5} />
-                  <span className="leading-relaxed"><strong>Brinca deitada ou recostada de forma relaxada por 30 minutos</strong> enquanto descansa fisicamente o seu esqueleto cansado.</span>
+                  <span className="leading-relaxed">Seu filho ri, participa, se aproxima e vai dormir depois de ter <strong>sentido a sua presença — não a sua culpa.</strong></span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-sage shrink-0 mt-0.5" strokeWidth={2.5} />
-                  <span className="leading-relaxed">Adormece com o coração em paz e quentinho, lembrando das <strong>risadas sinceras e bobas dele</strong> minutos atrás.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-sage shrink-0 mt-0.5" strokeWidth={2.5} />
-                  <span className="leading-relaxed">Abençoa sua própria realidade e <strong>percebe que conexão real não exige energia absurda</strong> de animadores de buffet infantil.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-sage shrink-0 mt-0.5" strokeWidth={2.5} />
-                  <span className="leading-relaxed">Ele te guarda na memória afetiva dele como <strong>a melhor mãe do universo que sempre tinha uma brincadeira incrível de sofá</strong>.</span>
+                  <span className="leading-relaxed">Você termina a noite mais tranquila, com a sensação de que <strong>não precisa ser perfeita nem incansável para construir memórias bonitas com ele.</strong></span>
                 </li>
               </ul>
             </div>
@@ -372,45 +364,128 @@ export default function App() {
         </div>
       </section>
 
-      {/* BLOCK 07 — MISSÃO E PROPÓSITO (Carta de Mãe pra Mãe) [OPTIONAL CHOSEN] */}
-      <section id="missao-propósito" className="py-20 px-4 watercolor-wash-pink">
-        <div className="max-w-3xl mx-auto w-full bg-white/60 border border-coral/10 rounded-3xl p-6 md:p-10 shadow-sm relative space-y-6">
-          <div className="text-center space-y-2">
-            <span className="text-xs bg-coral/10 text-coral-dark font-sans font-bold uppercase px-3 py-1 rounded-full">
-              POR QUE ESSE GUIA EXISTE
+      {/* BLOCK 07 — CARTA */}
+      <section
+        id="missao-propósito"
+        className="relative py-16 md:py-20 px-4"
+      >
+        {/* Card da carta - design leve */}
+        <div className="max-w-3xl mx-auto bg-white rounded-2xl border border-petroleo/8 shadow-lg p-8 md:p-12">
+          
+          {/* Etiqueta */}
+          <div className="flex justify-center mb-6">
+            <span className="text-[10px] bg-coral/10 text-coral-dark font-bold uppercase px-3 py-1.5 rounded-full tracking-widest">
+              Uma mensagem pra você
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-petroleo font-bold">
-              De mãe pra mãe — uma carta antes de você decidir
+          </div>
+
+          {/* Título */}
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-petroleo text-center mb-8">
+            Antes de você decidir...
+          </h2>
+
+          {/* Divider simples */}
+          <div className="flex justify-center mb-8">
+            <div className="w-16 h-px bg-coral/30 rounded-full"></div>
+          </div>
+
+          {/* Corpo da carta */}
+          <div className="font-sans text-sm sm:text-base text-terracotta/90 leading-relaxed space-y-4 max-w-2xl mx-auto">
+            <p>Talvez ninguém tenha te dito isso nos últimos tempos.</p>
+            <p><strong className="text-petroleo font-semibold">Estar cansada não significa amar menos.</strong></p>
+            <p>Você não precisa competir com mães da internet, inventar brincadeiras mirabolantes ou encontrar energia onde ela simplesmente não existe.</p>
+            <p>Seu filho não vai lembrar de quantas vezes você correu pela casa.</p>
+            <p><strong className="text-petroleo font-semibold">Ele vai lembrar da sensação de ter você por perto.</strong></p>
+            <p>Mesmo de pijama. Mesmo deitada. Mesmo depois de um dia difícil.</p>
+            <p>Foi por isso que este guia nasceu.</p>
+            <p>Para ajudar mães reais a viverem momentos reais.</p>
+            <p><strong className="text-petroleo font-semibold">Sem culpa. Sem performance. Só presença.</strong></p>
+            <p className="italic text-coral-dark pt-2">
+              Porque, no fim, a infância quase nunca guarda o brinquedo. Ela guarda quem estava ali.
+            </p>
+          </div>
+
+          {/* Assinatura */}
+          <div className="mt-10 pt-6 border-t border-petroleo/8 text-center">
+            <p className="font-serif text-lg text-petroleo italic">
+              Com carinho,
+            </p>
+            <p className="font-serif text-xl text-coral-dark font-semibold mt-1">
+              Uma mãe que te entende
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* BLOCK 11 — PROVA SOCIAL (carrossel) */}
+      <section id="prova-social" className="py-16 px-4 bg-creme">
+        <div className="max-w-2xl mx-auto w-full">
+
+          {/* Header */}
+          <div className="text-center space-y-2 mb-10">
+            <span className="text-xs bg-sage/10 text-emerald-800 font-bold font-sans uppercase px-3 py-1 rounded-full tracking-wider">
+              MÃES QUE JÁ TESTARAM
+            </span>
+            <h2 className="font-serif text-xl sm:text-3xl md:text-4xl text-petroleo font-bold">
+              Mães que também achavam que nada resolveria
             </h2>
-          </div>
-
-          {/* Letter text with proper typesetting */}
-          <div className="font-sans text-base md:text-lg text-petroleo leading-relaxed md:leading-[1.7] space-y-6 font-normal">
-            <p>
-              Esse guia não nasceu de uma pedagoga fardada de teoria querendo te ensinar a brincar "do jeito politicamente correto".
-            </p>
-            <p>
-              Ele nasceu na verdade de uma frase sincera que dezenas de mães já disseram (e eu mesma já confessei pra mim) — em voz baixa, sentada na tampa do vaso sanitário trancada no banheiro:
-            </p>
-            
-            <blockquote className="border-l-4 border-coral pl-5 italic text-petroleo bg-white/40 p-5 rounded-r-xl my-6 text-[17px] md:text-lg leading-relaxed shadow-sm">
-              "Gritei com ele hoje por uma total tolice. Mas a verdade é que eu nem estava brava de verdade — eu só estava no meu limite físico, eu não queria ter que rolar no tapete e não sabia como ter paz de espírito. Fui dormir me sentindo o pior ser humano na face da terra."
-            </blockquote>
-
-            <p>
-              A gente necessita urgentemente parar de fantasiar que ser "uma excelente mãe de referência" exige que você tenha energia inesgotável de palhaço ou animadora de festa de condomínio às 20h da noite após vencer desafios reais de trabalho.
-            </p>
-            <p>
-              Você de forma alguma tem que virar uma cópia barulhenta de vídeo de internet. Você só precisa de <strong className="font-bold">soluções práticas que respeitem o seu cansaço legítimo</strong> do dia.
-            </p>
-            <p>
-              Esse manual em PDF é exatamente esse atalho. Um meio testado de você se manter presente na vida dele sendo exatamente quem você é — exausta, escorada, de moletom, e deitada no sofá da sala, e ainda ser <strong className="font-bold">a mãe maravilhosa de quem ele vai se orgulhar pra sempre</strong>.
+            <p className="font-sans text-sm sm:text-base text-terracotta/80 leading-relaxed max-w-lg mx-auto">
+              Antes de decidir, leia algumas mensagens que recebi de mães que estavam exatamente onde você está hoje.
             </p>
           </div>
 
-          <div className="text-right pt-4 border-t border-petroleo/5">
-            <span className="cursive-highlight">Feito com carinho para mães reais, em dias reais. 💛</span>
+          {/* Carrossel */}
+          <TestimonialsCarousel items={[
+            {
+              name: 'Camila',
+              title: '"Eu não precisava de mais disposição. Eu precisava de um caminho."',
+              img: 'https://i.ibb.co/q3q4vCYS/1.webp',
+            },
+            {
+              name: 'Priscila',
+              title: '"Pela primeira vez consegui brincar exatamente do jeito que meu corpo permitia."',
+              img: 'https://i.ibb.co/7wJ2V0j/5.webp',
+            },
+            {
+              name: 'Amanda',
+              title: '"Meu filho largou o celular... e eu parei de terminar todas as noites me culpando."',
+              img: 'https://i.ibb.co/NMwMn6M/2.webp',
+            },
+            {
+              name: 'Carolina',
+              title: '"Achei que ia ganhar algumas brincadeiras. Acabei recuperando minhas noites."',
+              img: 'https://i.ibb.co/84jhd5Fx/3.webp',
+            },
+            {
+              name: 'Juliana',
+              title: '"A frase da minha filha valeu muito mais do que qualquer elogio ao guia."',
+              img: 'https://i.ibb.co/GQJK6t3j/4.webp',
+            },
+          ]} />
+
+          {/* Bloco de fechamento */}
+          <div className="mt-12 text-center space-y-4 max-w-lg mx-auto">
+            <p className="font-sans text-xs uppercase tracking-widest text-terracotta/50 font-semibold">
+              Percebe uma coisa?
+            </p>
+            <p className="font-serif text-lg sm:text-xl text-petroleo leading-relaxed">
+              Nenhuma dessas mães disse que ficou menos cansada.
+            </p>
+            <div className="space-y-2 font-sans text-sm sm:text-base text-terracotta/80 leading-relaxed">
+              <p>O cansaço continua existindo.</p>
+              <p>O que mudou foi que ele deixou de impedir os momentos que realmente importam.</p>
+              <p className="font-semibold text-petroleo">Foi exatamente para isso que esse guia foi criado.</p>
+            </div>
+            <div className="pt-4">
+              <button
+                onClick={() => { trackCTA2(); scrollWithId('oferta-valores'); }}
+                className="w-full py-4 px-6 bg-gradient-to-r from-coral to-coral-dark hover:from-coral-dark hover:to-coral-dark text-white font-sans font-bold text-sm rounded-2xl shadow-lg hover:shadow-xl hover:shadow-coral/20 transition-all cursor-pointer transform active:scale-[0.99] uppercase tracking-wider"
+              >
+                Quero viver noites assim também
+              </button>
+            </div>
           </div>
+
         </div>
       </section>
 
@@ -421,7 +496,7 @@ export default function App() {
             <span className="text-xs bg-coral/10 text-coral-dark font-sans font-bold uppercase px-3 py-1 rounded-full">
               O PRODUTO PRINCIPAL
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-petroleo font-bold">
+            <h2 className="font-serif text-xl sm:text-3xl md:text-4xl text-petroleo font-bold">
               Tudo que você vai receber ao adquirir hoje
             </h2>
           </div>
@@ -447,7 +522,7 @@ export default function App() {
                       O GUIA BASE
                     </span>
                   </div>
-                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-petroleo leading-tight">
+                  <h3 className="font-serif text-xl sm:text-3xl font-bold text-petroleo leading-tight">
                     +120 Dinâmicas de Sofá para Mães Cansadas
                   </h3>
                   <p className="font-sans text-sm text-terracotta/80 mt-1 leading-relaxed">
@@ -516,7 +591,7 @@ export default function App() {
             <span className="text-[11px] bg-sage/15 text-emerald-800 font-extrabold font-sans uppercase px-3.5 py-1.5 rounded-full border border-sage/25 tracking-wider">
               E NÃO PARA POR AÍ…
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-petroleo font-bold tracking-tight">
+            <h2 className="font-serif text-xl sm:text-4xl text-petroleo font-bold tracking-tight">
               Você também vai receber 4 bônus exclusivos gratuitamente
             </h2>
             <p className="font-sans text-xs sm:text-sm text-terracotta/90 max-w-lg mx-auto leading-relaxed">
@@ -559,7 +634,7 @@ export default function App() {
                   )}
 
                   <div className="space-y-2">
-                    <h4 className="font-sans font-bold text-petroleo text-sm sm:text-base leading-snug">
+                    <h4 className="font-sans font-bold text-petroleo text-xs sm:text-base leading-snug">
                       {bonus.name}
                     </h4>
                     <p className="text-xs text-terracotta/80 leading-relaxed font-sans">
@@ -594,7 +669,7 @@ export default function App() {
             <span className="inline-flex items-center gap-1.5 text-xs bg-coral/10 text-coral-dark font-sans font-bold uppercase px-3.5 py-1.5 rounded-full border border-coral/15 tracking-wide">
               <Sparkles className="w-3.5 h-3.5" /> ESCOLHA SEU PLANO DE ACESSO
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-petroleo font-bold tracking-tight max-w-2xl mx-auto leading-tight">
+            <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl text-petroleo font-bold tracking-tight max-w-2xl mx-auto leading-tight">
               Quanto vale parar de ir dormir com culpa?
             </h2>
             <p className="font-sans text-xs sm:text-sm md:text-base text-terracotta max-w-lg mx-auto leading-relaxed">
@@ -614,7 +689,7 @@ export default function App() {
                 </div>
                 
                 <div>
-                  <h4 className="font-serif text-2xl font-extrabold text-petroleo leading-tight">
+                  <h4 className="font-serif text-xl font-extrabold text-petroleo leading-tight">
                     Só o Guia Básico
                   </h4>
                   <p className="text-sm text-terracotta/80 mt-1.5">Manual completo com as 120 dinâmicas de sofá principais no formato PDF.</p>
@@ -690,10 +765,10 @@ export default function App() {
                   <span className="inline-block text-xs font-extrabold text-coral-dark-accent bg-coral/10 px-3 py-1 rounded-md font-sans uppercase tracking-wider border border-coral/10">
                     Combo Recomendado
                   </span>
-                  <h4 className="font-serif text-3xl sm:text-4xl font-extrabold text-[#312523] leading-tight mt-2.5">
+                  <h4 className="font-serif text-2xl sm:text-4xl font-extrabold text-[#312523] leading-tight mt-2.5">
                     Kit Completo + 4 Bônus
                   </h4>
-                  <p className="text-sm sm:text-base text-terracotta/90 mt-1.5">O arsenal lúdico definitivo de descompressão e educação tranquila para o seu lar.</p>
+                  <p className="text-xs sm:text-base text-terracotta/90 mt-1.5">O arsenal lúdico definitivo de descompressão e educação tranquila para o seu lar.</p>
                 </div>
 
                 <hr className="border-coral/10" />
@@ -729,7 +804,7 @@ export default function App() {
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
                   <div>
                     <span className="text-xs sm:text-sm text-zinc-400 line-through">De R$ 168,00 por apenas</span>
-                    <div className="font-serif text-4xl sm:text-5xl font-black text-coral-dark mt-1 flex items-baseline gap-1">
+                    <div className="font-serif text-3xl sm:text-5xl font-black text-coral-dark mt-1 flex items-baseline gap-1">
                       R$ 24,90
                       <span className="text-xs font-sans font-medium text-terracotta">à vista</span>
                     </div>
@@ -781,48 +856,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* BLOCK 11 — PROVA SOCIAL [OPTIONAL CHOSEN] */}
-      <section id="prova-social" className="py-20 px-4 max-w-5xl mx-auto w-full">
-        <div className="text-center space-y-2 mb-12">
-          <span className="text-xs bg-sage/10 text-emerald-800 font-bold font-sans uppercase px-3 py-1 rounded-full">
-            MÃES QUE JÁ TESTARAM
-          </span>
-          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-petroleo font-bold">
-            O que outras mães cansadas estão dizendo
-          </h2>
-        </div>
-
-        {/* Testimonials 2-column or 3-column layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {REVIEWS.map((review) => (
-            <div key={review.id} className="bg-white border border-petroleo/10 rounded-2xl p-6 shadow-xs relative flex flex-col justify-between hover:border-coral/20">
-              <div className="space-y-4">
-                {/* Visual Stars */}
-                <div className="flex items-center gap-1 text-amber-500">
-                  {Array.from({ length: review.stars }).map((_, i) => (
-                    <Star key={i} size={15} fill="currentColor" />
-                  ))}
-                </div>
-
-                <blockquote className="text-xs sm:text-sm text-petroleo leading-relaxed italic">
-                  "{review.text}"
-                </blockquote>
-              </div>
-
-              <div className="border-t border-neutral-100 pt-4 mt-6 flex justify-between items-center text-xs">
-                <div>
-                  <p className="font-semibold text-petroleo">{review.author}</p>
-                  <p className="text-[11px] text-terracotta/60 mt-0.5">{review.details}</p>
-                </div>
-                <span className="font-serif text-[11px] font-bold text-coral-dark bg-coral/5 px-2.5 py-1 rounded">
-                  Compra Confirmada
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* BLOCK 12 — GARANTIA [OPTIONAL CHOSEN] */}
       <section id="garantia" className="bg-white border-y border-petroleo/10 py-16 px-4">
         <div className="max-w-4xl mx-auto w-full">
@@ -838,7 +871,7 @@ export default function App() {
             </div>
 
             <div className="space-y-4 flex-1 text-center md:text-left">
-              <h2 className="font-serif text-2xl sm:text-3xl text-petroleo font-bold">
+              <h2 className="font-serif text-xl sm:text-3xl text-petroleo font-bold">
                 Garantia incondicional de 7 dias
               </h2>
               <p className="font-sans text-xs sm:text-sm text-terracotta leading-relaxed font-light">
@@ -858,7 +891,7 @@ export default function App() {
           <span className="text-xs bg-coral/10 text-coral-dark font-sans font-bold uppercase px-3 py-1 rounded-full">
             É SIMPLES ASSIM
           </span>
-          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-petroleo font-bold">
+          <h2 className="font-serif text-xl sm:text-3xl md:text-4xl text-petroleo font-bold">
             Como você recebe o material após a compra
           </h2>
         </div>

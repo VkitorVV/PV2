@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
-  BookOpen, Layers, Eye, Smartphone, MousePointer, 
-  Sparkles, CheckCircle, ChevronRight, Bookmark, ChevronLeft, ArrowRight
+  BookOpen, Smartphone, ChevronRight, ChevronLeft, ArrowRight
 } from 'lucide-react';
 
 const IMAGES = {
@@ -79,59 +78,12 @@ const ITEMS: MockupItem[] = [
     badge: 'Módulo 05',
     description: 'Estimule a imaginação profunda das crianças enquanto relaxa.'
   },
-  {
-    id: 'continua',
-    title: 'Página: Continue a História',
-    category: 'pagina',
-    url: IMAGES.continua,
-    badge: 'Pág. Amostra',
-    description: 'Deitada no sofá, inicie a história e deixe o seu filho guiar a aventura.'
-  },
-  {
-    id: 'mao',
-    title: 'Página: O Que Tem Na Minha Mão',
-    category: 'pagina',
-    url: IMAGES.mao,
-    badge: 'Pág. Amostra',
-    description: 'Seu filho busca objetos misteriosos para você adivinhar de olhos fechados.'
-  },
-  {
-    id: 'palavra',
-    title: 'Página: Não Pode Falar Essa Palavra',
-    category: 'pagina',
-    url: IMAGES.palavra,
-    badge: 'Pág. Amostra',
-    description: 'Desafio lúdico de perguntas proibindo termos fáceis.'
-  },
-  {
-    id: 'emocao',
-    title: 'Página: Que Emoção é Essa?',
-    category: 'pagina',
-    url: IMAGES.emocao,
-    badge: 'Pág. Amostra',
-    description: 'Caretas deitados para falar de sentimentos sem pressões.'
-  },
-  {
-    id: 'mensagem',
-    title: 'Página: Mensagem Misteriosa',
-    category: 'pagina',
-    url: IMAGES.mensagem,
-    badge: 'Pág. Amostra',
-    description: 'O seu filho escreve suavemente nas suas costas. Relaxamento e carinho.'
-  }
 ];
 
 export default function HeroBundleMockup() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [zoomOpen, setZoomOpen] = useState(false);
 
-  // Auto-pass carousel images every 5 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % ITEMS.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
+
 
   const selectedItem = ITEMS[currentIndex];
 
@@ -159,8 +111,7 @@ export default function HeroBundleMockup() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
               transition={{ duration: 0.3 }}
-              className="absolute inset-0 w-full h-full flex items-center justify-center cursor-pointer p-2 sm:p-4"
-              onClick={() => setZoomOpen(true)}
+              className="absolute inset-0 w-full h-full flex items-center justify-center p-2 sm:p-4"
             >
               <img 
                 src={selectedItem.url} 
@@ -207,80 +158,6 @@ export default function HeroBundleMockup() {
       </div>
 
       {/* Lightbox Modal for Zooming Pages / Covers */}
-      <AnimatePresence>
-        {zoomOpen && (
-          <div 
-            className="fixed inset-0 bg-black/85 backdrop-blur-md z-[100] flex flex-col items-center justify-center p-3 sm:p-6"
-            onClick={() => setZoomOpen(false)}
-          >
-            <motion.div 
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 350 }}
-              className="relative max-w-lg w-full bg-white rounded-3xl p-4 sm:p-5 flex flex-col items-center space-y-4"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Header inside Modal */}
-              <div className="w-full flex justify-between items-center pb-2 border-b border-[#3d2b29]/8">
-                <div className="flex items-center gap-2">
-                  <Bookmark size={14} className="text-[#e36b3c]" />
-                  <span className="text-xs uppercase font-extrabold tracking-widest text-[#3d2b29]">
-                    visualizando página ampliada
-                  </span>
-                </div>
-                <button 
-                  onClick={() => setZoomOpen(false)}
-                  className="w-7 h-7 rounded-full bg-[#fbf6f1] text-[#3d2b29] font-bold text-xs flex items-center justify-center cursor-pointer hover:bg-red-50"
-                >
-                  ✕
-                </button>
-              </div>
-
-              {/* Main Image content */}
-              <div className="w-full rounded-2xl overflow-hidden border border-[#3d2b29]/10 bg-[#fbf6f1] max-h-[70vh] flex items-center justify-center select-none shadow-md">
-                <img 
-                  src={selectedItem.url} 
-                  alt={selectedItem.title} 
-                  className="w-auto h-auto max-h-[60vh] object-contain"
-                />
-              </div>
-
-              {/* Description inside Modal */}
-              <div className="text-center space-y-1">
-                <h5 className="font-serif font-black text-base text-[#3d2b29]">
-                  {selectedItem.title}
-                </h5>
-                <p className="text-xs text-[#3d2b29]/80">
-                  {selectedItem.description}
-                </p>
-              </div>
-
-              {/* Action buttons inside Modal */}
-              <div className="w-full grid grid-cols-2 gap-2 pt-2">
-                <button
-                  onClick={() => setZoomOpen(false)}
-                  className="py-3 px-4 bg-[#fbf6f1] hover:bg-[#f2e7dc] text-[#3d2b29] font-bold rounded-xl text-xs uppercase tracking-wider cursor-pointer"
-                >
-                  Fechar janela
-                </button>
-                <button
-                  onClick={() => {
-                    setZoomOpen(false);
-                    const element = document.getElementById('oferta-valores');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className="py-3 px-4 bg-[#e36b3c] hover:bg-[#c44a1f] text-white font-bold rounded-xl text-xs uppercase tracking-wider cursor-pointer shadow-md shadow-[#e36b3c]/20"
-                >
-                  Garantir Meu Acesso
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
