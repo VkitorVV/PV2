@@ -160,6 +160,10 @@ export default function DynamicPreviewPlayground() {
                       key={dinamica.id}
                       src={IMAGES_MAP[dinamica.id] ?? ''}
                       alt={`Página da dinâmica ${dinamica.title}`}
+                      width="420"
+                      height="600"
+                      loading="lazy"
+                      decoding="async"
                       className={`w-full h-full object-cover object-center ${
                         dinamica.id === 'emocao' ? 'scale-110' : ''
                       } ${

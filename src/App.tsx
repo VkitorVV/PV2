@@ -59,8 +59,8 @@ export default function App() {
     <div id="sales-page-container" className="min-h-screen flex flex-col font-sans selection:bg-coral/20 selection:text-coral-dark bg-creme relative overflow-x-hidden">
       
       {/* Decorative top watercolor wash */}
-      <div className="absolute top-0 right-0 w-[40vw] h-[40vw] watercolor-wash-pink rounded-full -z-10 pointer-events-none opacity-40"></div>
-      <div className="absolute top-1/4 left-0 w-[35vw] h-[35vw] watercolor-wash-sage rounded-full -z-10 pointer-events-none opacity-30"></div>
+      <div className="absolute top-0 right-0 w-[40vw] h-[40vw] watercolor-wash-pink rounded-full -z-10 pointer-events-none opacity-40" aria-hidden="true"></div>
+      <div className="absolute top-1/4 left-0 w-[35vw] h-[35vw] watercolor-wash-sage rounded-full -z-10 pointer-events-none opacity-30" aria-hidden="true"></div>
 
       {/* BLOCK 01 — VENDA IMEDIATA (Hero section/first fold) */}
       <section id="venda-imediata" className="pt-10 pb-16 md:pt-16 md:pb-24 px-4 max-w-7xl mx-auto w-full">
@@ -505,7 +505,15 @@ export default function App() {
           <div className="bg-white border border-petroleo/10 rounded-[32px] p-6 sm:p-10 shadow-xl shadow-petroleo/5 hover:shadow-2xl hover:border-coral/20 transition-all duration-300 relative overflow-hidden group">
             <div className="flex flex-col md:flex-row gap-8 items-center relative z-10">
               <div className="w-full max-w-[340px] xs:max-w-[380px] sm:max-w-[420px] md:w-72 lg:w-80 xl:w-96 shrink-0 relative">
-                <img src="https://i.ibb.co/TBGh2LBS/Chat-GPT-Image-30-de-mai-de-2026-12-21-23-1.webp" alt="Guia Base +120 Dinâmicas" className="w-full h-auto object-contain rounded-2xl animate-fade-in transition-transform duration-500 group-hover:scale-[1.01]" />
+                <img
+                  src="https://i.ibb.co/TBGh2LBS/Chat-GPT-Image-30-de-mai-de-2026-12-21-23-1.webp"
+                  alt="Guia Base +120 Dinâmicas de Sofá para Mães Cansadas"
+                  width="384"
+                  height="512"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-contain rounded-2xl animate-fade-in transition-transform duration-500 group-hover:scale-[1.01]"
+                />
                 <div className="absolute inset-0 bg-[#3d2b29]/85 opacity-0 hover:opacity-100 transition-all flex flex-col items-center justify-center text-white text-xs font-bold gap-1 cursor-pointer rounded-2xl" onClick={() => scrollWithId('demonstrativo-visual')}>
                   <Eye size={14} className="text-[#e36b3c]" /> 
                   <span className="mt-1">Ver Prévias</span>
@@ -614,6 +622,10 @@ export default function App() {
                       <img
                         src={bonus.mockImage}
                         alt={bonus.name}
+                        width="200"
+                        height="200"
+                        loading="lazy"
+                        decoding="async"
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-contain rounded-xl transition-transform duration-500 group-hover/card:scale-105"
                       />

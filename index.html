@@ -5,7 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>+120 Dinâmicas de Sofá para Mães Cansadas — Guia Prático Oficial</title>
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Pré-conexões para origens críticas (reduz latência DNS/TCP) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://i.ibb.co" />
+    <link rel="preconnect" href="https://tracking.utmify.com.br" />
+    <link rel="preconnect" href="https://cdn.utmify.com.br" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+
+    <!-- Google Fonts com font-display:swap para não bloquear renderização -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Preload da imagem hero (LCP crítico) -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://i.ibb.co/TBGh2LBS/Chat-GPT-Image-30-de-mai-de-2026-12-21-23-1.webp"
+      fetchpriority="high"
+    />
+
+    <!-- Google Analytics (GA4) — async não bloqueia parser -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MS5015RWN9"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,12 +36,14 @@
       gtag('config', 'G-MS5015RWN9');
     </script>
 
+    <!-- UTMify + Pixel do Facebook — defer: não bloqueiam parser mas executam antes do load,
+         garantindo captura de UTMs e PageView antes do lead interagir -->
+
     <!-- UTMify — captura e repassa UTMs para todos os links da página -->
     <script
       src="https://cdn.utmify.com.br/scripts/utms/latest.js"
       data-utmify-prevent-xcod-sck
       data-utmify-prevent-subids
-      async
       defer
     ></script>
 
@@ -27,7 +51,6 @@
     <script>
       window.pixelId = "6a0e235fe50d62648fcd7f04";
       var a = document.createElement("script");
-      a.setAttribute("async", "");
       a.setAttribute("defer", "");
       a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
       document.head.appendChild(a);
@@ -38,4 +61,3 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

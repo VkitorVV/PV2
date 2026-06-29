@@ -115,6 +115,10 @@ export default function TestimonialsCarousel({ items }: Props) {
               key={t.img}
               src={t.img}
               alt={i === current ? `Depoimento de ${t.name}` : ''}
+              width="600"
+              height="800"
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
               className="w-full h-auto block"
               style={
                 i === current
